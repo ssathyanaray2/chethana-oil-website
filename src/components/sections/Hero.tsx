@@ -11,7 +11,7 @@ const leftPills = [
 
 const rightPills = [
   { icon: "eco", label: "Farm Sourced", sub: "Challakere" },
-  { icon: "verified", label: "FSSAI Certified", sub: "Quality assured" },
+  { icon: "verified", label: "Local Seeds", sub: "Quality assured" },
 ];
 
 const EASE = [0.4, 0, 0.2, 1] as [number, number, number, number];
@@ -45,7 +45,7 @@ export default function Hero() {
             <br />intended.
           </motion.h1>
 
-          <motion.p {...fadeUp(0.3)} className="text-on-surface-variant text-lg leading-relaxed max-w-md">
+          <motion.p {...fadeUp(0.3)} className="text-on-surface-variant fond-bond text-lg leading-relaxed max-w-md">
             Cold pressed below 40°C. No heat, no chemicals, no compromise.
             Every drop carries the full nutrition of the seed it came from.
           </motion.p>
@@ -75,7 +75,7 @@ export default function Hero() {
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-2xl font-bold text-primary">{stat.val}</p>
-                <p className="text-xs text-on-surface-variant">{stat.label}</p>
+                <p className="text-xs font-semibold text-on-surface-variant">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -89,7 +89,7 @@ export default function Hero() {
           className="relative flex justify-center"
         >
           {/* Left pills */}
-          <div className="hidden md:flex absolute -left-8 top-8 flex-col gap-3 z-10">
+          <div className="hidden md:flex absolute -left-3 top-8 flex-col gap-3 z-10">
             {leftPills.map((pill, i) => (
               <motion.div
                 key={pill.label}

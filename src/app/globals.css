@@ -10,6 +10,26 @@
     font-family: 'Be Vietnam Pro', sans-serif;
     @apply bg-background text-on-surface;
   }
+
+  /* Fixed blurred background texture — sits behind all content, never scrolls */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('/images/bg-texture-potrait.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    filter: blur(2px);
+  }
+
+  @media (min-width: 1024px) {
+    body::before {
+      background-image: url('/images/bg-texture.png');
+    }
+  }
   h1, h2, h3, h4 {
     font-family: 'Epilogue', sans-serif;
     @apply text-on-surface;
@@ -23,4 +43,5 @@
 @layer utilities {
   .border-theme { border-color: #f0d88a; }
   .sun-shadow   { box-shadow: 0 20px 40px rgba(196, 138, 0, 0.08); }
+
 }

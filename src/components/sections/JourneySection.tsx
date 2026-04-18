@@ -9,71 +9,8 @@ const STEP_DURATION = 4000;
 
 function OilDrop() {
   return (
-    <svg width="22" height="28" viewBox="0 0 22 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        {/* Main body: warm amber-gold, darker at edges */}
-        <radialGradient id="od-body" cx="38%" cy="30%" r="68%" gradientUnits="objectBoundingBox">
-          <stop offset="0%"   stopColor="#ffe066" />
-          <stop offset="30%"  stopColor="#d49a00" />
-          <stop offset="65%"  stopColor="#a06800" />
-          <stop offset="100%" stopColor="#6b4200" />
-        </radialGradient>
-
-        {/* Primary specular — the big bright patch that sells the liquid look */}
-        <radialGradient id="od-spec1" cx="33%" cy="26%" r="42%" gradientUnits="objectBoundingBox">
-          <stop offset="0%"   stopColor="rgba(255,255,255,0.90)" />
-          <stop offset="55%"  stopColor="rgba(255,255,255,0.22)" />
-          <stop offset="100%" stopColor="rgba(255,255,255,0)" />
-        </radialGradient>
-
-        {/* Warm inner back-light at the bottom of the drop */}
-        <radialGradient id="od-warm" cx="55%" cy="80%" r="45%" gradientUnits="objectBoundingBox">
-          <stop offset="0%"   stopColor="rgba(255,190,30,0.50)" />
-          <stop offset="100%" stopColor="rgba(255,190,30,0)" />
-        </radialGradient>
-
-        {/* Soft outer glow */}
-        <filter id="od-glow" x="-40%" y="-40%" width="180%" height="180%">
-          <feGaussianBlur stdDeviation="1.5" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      {/* Drop body */}
-      <path
-        d="M11 1C11 1 1 12.5 1 18a10 10 0 0 0 20 0C21 12.5 11 1 11 1Z"
-        fill="url(#od-body)"
-        filter="url(#od-glow)"
-      />
-
-      {/* Warm back-light */}
-      <path
-        d="M11 1C11 1 1 12.5 1 18a10 10 0 0 0 20 0C21 12.5 11 1 11 1Z"
-        fill="url(#od-warm)"
-      />
-
-      {/* Large primary specular — rotated ellipse */}
-      <ellipse
-        cx="7.5" cy="14"
-        rx="3.8" ry="6"
-        fill="url(#od-spec1)"
-        transform="rotate(-28 7.5 14)"
-      />
-
-      {/* Small sharp secondary highlight */}
-      <ellipse
-        cx="7" cy="11.5"
-        rx="1.6" ry="2.5"
-        fill="rgba(255,255,255,0.55)"
-        transform="rotate(-22 7 11.5)"
-      />
-
-      {/* Tiny specular pinpoint */}
-      <circle cx="6.8" cy="10.2" r="0.9" fill="rgba(255,255,255,0.82)" />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/images/drop_img.png" alt="" width={40} height={40} style={{ width: 40, height: "auto", mixBlendMode: "multiply" }} />
   );
 }
 
@@ -100,7 +37,7 @@ export default function JourneySection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-surface-container py-12 md:py-20 px-4 sm:px-8"
+      className="bg-surface-container py-16 md:py-20 px-4 sm:px-8"
       id="journey"
     >
       <div className="max-w-7xl mx-auto">
@@ -134,7 +71,7 @@ export default function JourneySection() {
             */}
             <div className="relative flex justify-between">
               {/* Bar lives here — inset to match dot centres */}
-              <div className="absolute left-6 right-6 top-6 z-10" style={{ height: 1 }}>
+              <div className="absolute left-6 right-6 top-6 z-30" style={{ height: 1 }}>
                 {/* Track */}
                 <div className="absolute inset-0 bg-outline" />
 
@@ -147,18 +84,12 @@ export default function JourneySection() {
 
                 {/* Oil drop — rides the fill, hangs just above the bar */}
                 <motion.div
-                  className="absolute -translate-x-1/2 z-20"
-                  style={{ bottom: "calc(100% + 4px)" }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
+                  style={{ top: "50%", filter: "drop-shadow(0 4px 8px rgba(196,138,0,0.5))" }}
                   animate={{ left: `${barPct}%` }}
                   transition={{ duration: 0.9, ease: EASE }}
                 >
-                  <motion.div
-                    animate={{ y: [0, -5, 0] }}
-                    transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                    style={{ filter: "drop-shadow(0 3px 5px rgba(196,138,0,0.4))" }}
-                  >
-                    <OilDrop />
-                  </motion.div>
+                  <OilDrop />
                 </motion.div>
               </div>
 

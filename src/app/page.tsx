@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import ScienceSection from "@/components/sections/ScienceSection";
+// import BottleScrollAnimation from "@/components/BottleScrollAnimation";
 import JourneySection from "@/components/sections/JourneySection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import GayusGlitz from "@/components/sections/GayusGlitz";
@@ -50,14 +51,16 @@ export default function HomePage() {
       <Navbar />
 
       <main>
-        <Hero />
-        <ScienceSection />
-        <JourneySection />
-        <ProductsSection />
-        <GayusGlitz />
-        <FamilySection />
-        <WhatsAppOrder />
-        <CTABanner />
+        {/* <BottleScrollAnimation> */}
+          <Hero />
+          <ScienceSection />
+          <JourneySection />
+          <ProductsSection />
+          <FamilySection />
+          <GayusGlitz />
+          {/* <WhatsAppOrder /> */}
+          <CTABanner />
+        {/* </BottleScrollAnimation> */}
       </main>
 
       <Footer />
