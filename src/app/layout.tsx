@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
     default: site.seo.defaultTitle,
     template: site.seo.titleTemplate,

@@ -4,7 +4,7 @@ export const site = {
   shortName: "Shabari's Chetana",
   tagline: "Real Oil from Real Seeds.",
   description:
-    "Chetana Cold Pressed Oils — buy pure chekku oil, wood pressed groundnut oil, sesame oil, coconut oil and mustard oil from Challakere, Karnataka. Chemical-free, single-ingredient oils pressed below 40°C to preserve 100% nutrition.",
+    "Chetana Cold Pressed Oils — buy pure cold pressed groundnut oil, sesame oil, coconut oil and mustard oil from Challakere, Karnataka. Chemical-free, single-ingredient oils pressed below 40°C to preserve 100% nutrition.",
   location: "Challakere, Karnataka, India",
   whatsapp: "919845134234",
   phone: "+91 98451 34234",
@@ -25,14 +25,10 @@ export const site = {
     defaultTitle: "Chetana Cold Pressed Oils | Challakere, Karnataka",
     keywords: [
       "cold pressed oil Challakere",
-      "chekku oil Challakere",
-      "wood pressed oil Karnataka",
       "cold pressed groundnut oil Karnataka",
       "cold pressed sesame oil Karnataka",
       "cold pressed coconut oil Karnataka",
       "cold pressed mustard oil Karnataka",
-      "chekku groundnut oil",
-      "chekku sesame oil",
       "buy cold pressed oil Chitradurga",
       "natural cold press oil near me",
       "chemical free cooking oil Karnataka",

@@ -13,7 +13,7 @@
     "headingLine1": "Oils pressed",
     "headingAccent": "the way nature",
     "headingLine3": "intended.",
-    "lede": "Pure chekku oil — cold pressed below 40°C from groundnut, sesame, coconut and mustard seeds. No heat, no chemicals, no compromise. Every drop carries the full nutrition of the seed it came from.",
+    "lede": "Pure cold pressed oils — pressed below 40°C. No heat, no chemicals, no compromise. Every drop carries the full nutrition of the seed it came from.",
     "orderCta": "Order via WhatsApp",
     "browseCta": "Browse Oils",
     "orCall": "or call us at",
@@ -39,13 +39,13 @@
     "stepBadge": "Step 0{number}: {title}"
   },
   "products": {
-    "heading": "Cold Pressed & Chekku Oils",
+    "heading": "Our Cold Pressed Oils",
     "viewAll": "View all oils"
   },
   "family": {
     "badge": "Trusted by Families",
     "heading": "The intelligent mother's choice for every kitchen",
-    "body": "From tadkas to dosas, rotis to curries — Chetana chekku oils and cold pressed groundnut, sesame and coconut oils bring the flavour and nutrition your family deserves. No compromise on purity, ever.",
+    "body": "From tadkas to dosas, rotis to curries — Chetana cold pressed groundnut, sesame and coconut oils bring the flavour and nutrition your family deserves. No compromise on purity, ever.",
     "trust": {
       "flavour": "Rich natural flavour — no artificial additives or preservatives",
       "natural": "100% natural, single-ingredient — just the seed, nothing else",
@@ -91,8 +91,8 @@
         "a": "Yes. We source seeds directly from farmers in and around Challakere, Chitradurga district, Karnataka. This keeps quality consistent and supports local agriculture. For some varieties, we work with the same farming families every season."
       },
       {
-        "q": "Is cold pressed oil the same as chekku oil or wood pressed oil?",
-        "a": "Yes — chekku oil, wood pressed oil, and cold pressed oil all refer to the same traditional extraction method where seeds are crushed slowly without heat. Chetana uses the same age-old chekku process, ensuring the oil retains its natural aroma, colour, and nutrition."
+        "q": "Is cold pressed oil the same as wood pressed oil?",
+        "a": "Yes — wood pressed oil and cold pressed oil refer to the same traditional extraction method where seeds are crushed slowly without heat. Chetana uses this age-old process, ensuring the oil retains its natural aroma, colour, and nutrition."
       }
     ]
   },
