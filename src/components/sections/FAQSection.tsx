@@ -2,38 +2,15 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const EASE = [0.4, 0, 0.2, 1] as [number, number, number, number];
 
-const faqs = [
-  {
-    q: "What does 'cold pressed' actually mean?",
-    a: "Cold pressing extracts oil using only mechanical pressure, keeping temperatures below 40°C throughout. This preserves the natural vitamins, antioxidants, and flavour that are destroyed when heat or chemicals are used in industrial extraction.",
-  },
-  {
-    q: "How is Chetana oil different from supermarket oils?",
-    a: "Supermarket oils are typically extracted using hexane (a petroleum solvent) at temperatures above 150°C, then bleached and deodorised. Chetana oils are single-ingredient — just the seed, cold pressed. Nothing added, nothing removed.",
-  },
-  {
-    q: "How do I order?",
-    a: "We take orders via WhatsApp. Just tap the 'Order via WhatsApp' button, send us your requirement, and we'll confirm availability and delivery details. We deliver within Challakere and surrounding areas.",
-  },
-  {
-    q: "How long does the oil stay fresh?",
-    a: "Cold pressed oils have a natural shelf life of 6–9 months when stored in a cool, dark place. Unlike refined oils, ours have no preservatives — so proper storage matters. Keep the cap tight and away from direct sunlight.",
-  },
-  {
-    q: "Can I use cold pressed oil for high-heat cooking?",
-    a: "It depends on the oil. Groundnut and mustard oils have high smoke points (230°C+) and are great for frying. Sesame and coconut oils are better for medium heat. We recommend using each oil within its smoke point for best nutrition and flavour.",
-  },
-  {
-    q: "Are the seeds sourced locally?",
-    a: "Yes. We source seeds directly from farmers in and around Challakere, Karnataka. This keeps quality consistent and supports local agriculture. For some varieties, we work with the same farming families every season.",
-  },
-];
-
 export default function FAQSection() {
+  const t = useTranslations("faq");
   const [openIdx, setOpenIdx] = useState<number | null>(null);
+
+  const items = t.raw("items") as { q: string; a: string }[];
 
   return (
     <section className="bg-surface-container py-16 md:py-20 px-4 sm:px-8 relative overflow-hidden" id="faq">
@@ -47,15 +24,15 @@ export default function FAQSection() {
           className="mb-10 md:mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Frequently asked questions
+            {t("heading")}
           </h2>
           <p className="text-on-surface-variant">
-            Everything you need to know about cold pressed oils and how we work.
+            {t("subheading")}
           </p>
         </motion.div>
 
         <div className="space-y-3">
-          {faqs.map((faq, i) => {
+          {items.map((faq, i) => {
             const isOpen = openIdx === i;
             return (
               <motion.div

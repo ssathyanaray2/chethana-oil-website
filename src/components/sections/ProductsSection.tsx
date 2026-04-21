@@ -3,14 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { oils } from "@/data/oils";
+import { useTranslations } from "next-intl";
 
 export default function ProductsSection() {
+  const t = useTranslations("products");
   return (
     <section className="py-12 md:py-20" id="oils">
       <div className="px-4 sm:px-8 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4">
         <div>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Our Products
+            {t("heading")}
           </h2>
         </div>
       </div>

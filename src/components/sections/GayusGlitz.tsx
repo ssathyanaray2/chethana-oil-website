@@ -1,6 +1,8 @@
 import { videos } from "@/data/videos";
+import { getTranslations } from "next-intl/server";
 
-export default function GayusGlitz() {
+export default async function GayusGlitz() {
+  const t = await getTranslations("gayus");
   const featured = videos.find((v) => v.featured);
   const side = videos.filter((v) => !v.featured).slice(0, 2);
   const bottom = videos.filter((v) => !v.featured).slice(2, 4);
@@ -12,16 +14,13 @@ export default function GayusGlitz() {
           <div>
             <div className="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-4">
               <span className="material-symbols-outlined text-[16px]">play_circle</span>
-              As Featured On
+              {t("badge")}
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-              Gayu&apos;s Glitz loves <br />
-              Chetana Cold Press
+            <h2 className="text-3xl md:text-4xl font-bold leading-tight whitespace-pre-line">
+              {t("heading")}
             </h2>
             <p className="text-on-surface-variant mt-3 max-w-md">
-              Gayithri, Karnataka&apos;s trusted organic lifestyle YouTuber, has
-              visited our mill and shared her honest experience with over 383,000
-              subscribers.
+              {t("body")}
             </p>
           </div>
           <a
@@ -36,8 +35,8 @@ export default function GayusGlitz() {
               </svg>
             </div>
             <div>
-              <p className="font-bold text-sm">Gayu&apos;s Glitz</p>
-              <p className="text-xs text-on-surface-variant">383K subscribers · 85M+ views</p>
+              <p className="font-bold text-sm">{t("channel")}</p>
+              <p className="text-xs text-on-surface-variant">{t("subscribers")}</p>
             </div>
           </a>
         </div>
@@ -58,7 +57,7 @@ export default function GayusGlitz() {
               </div>
               <div className="p-4">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                  Gayu&apos;s Glitz · {v.category}
+                  {t("videoLabel", { category: v.category })}
                 </span>
                 <p className="font-bold text-sm mt-1">{v.title}</p>
               </div>
@@ -71,7 +70,7 @@ export default function GayusGlitz() {
             className="flex items-center justify-center gap-2 border border-outline rounded-full py-3 text-sm font-bold text-primary hover:border-primary transition-colors"
           >
             <span className="material-symbols-outlined text-[18px]">play_circle</span>
-            View all videos on YouTube
+            {t("viewAll")}
           </a>
         </div>
 
@@ -92,7 +91,7 @@ export default function GayusGlitz() {
                 </div>
                 <div className="p-5">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                    Gayu&apos;s Glitz · {featured.category}
+                    {t("videoLabel", { category: featured.category })}
                   </span>
                   <p className="font-bold mt-1">{featured.title}</p>
                   {featured.description && (

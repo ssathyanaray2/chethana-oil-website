@@ -1,19 +1,20 @@
 import Link from "next/link";
 import { site } from "@/data/site";
+import { getTranslations } from "next-intl/server";
 
-export default function CTABanner() {
+export default async function CTABanner() {
+  const t = await getTranslations("cta");
+
   return (
     <section className="px-4 sm:px-8 py-8 md:py-14">
       <div className="max-w-7xl mx-auto bg-primary rounded-[2rem] md:rounded-[3.5rem] p-8 md:p-16 text-center relative overflow-hidden border border-outline">
         <div className="absolute inset-0 bg-white opacity-5 pointer-events-none" />
         <div className="relative z-10 space-y-5 md:space-y-7">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-on-primary leading-tight">
-            Straight from Challakere <br className="hidden sm:block" />
-            to your kitchen
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-on-primary leading-tight whitespace-pre-line">
+            {t("heading")}
           </h2>
           <p className="text-on-primary text-base md:text-xl opacity-80 max-w-2xl mx-auto">
-            Join {site.familiesServed} families who have switched to uncompromised
-            purity. Your health is our heritage.
+            {t("body", { familiesServed: site.familiesServed })}
           </p>
           <Link
             href="/#order"
@@ -25,7 +26,7 @@ export default function CTABanner() {
             >
               chat
             </span>
-            Order via WhatsApp
+            {t("button")}
           </Link>
         </div>
       </div>

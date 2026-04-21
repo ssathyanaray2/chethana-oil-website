@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { journeySteps } from "@/data/journeySteps";
+import { useTranslations } from "next-intl";
 
 const EASE = [0.4, 0, 0.2, 1] as [number, number, number, number];
 const STEP_DURATION = 4000;
@@ -15,6 +16,7 @@ function OilDrop() {
 }
 
 export default function JourneySection() {
+  const t = useTranslations("journey");
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
@@ -68,10 +70,10 @@ export default function JourneySection() {
           className="text-center mb-8 md:mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            The journey of every drop
+            {t("heading")}
           </h2>
           <p className="text-on-surface-variant max-w-xl mx-auto">
-            From the sun-baked farms of Challakere to your kitchen table.
+            {t("subheading")}
           </p>
         </motion.div>
 
@@ -189,7 +191,7 @@ export default function JourneySection() {
                 transition={{ delay: 0.05, duration: 0.3, ease: EASE }}
                 className="inline-flex bg-primary text-on-primary px-3 py-0.5 rounded-full text-xs font-bold"
               >
-                Step 0{step.number}: {step.title}
+                {t("stepBadge", { number: step.number, title: step.title })}
               </motion.span>
 
               <motion.h3

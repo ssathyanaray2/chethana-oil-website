@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import { scienceCards } from "@/data/science";
+import { useTranslations } from "next-intl";
 
 const EASE = [0.4, 0, 0.2, 1] as [number, number, number, number];
 
 export default function ScienceSection() {
-
+  const t = useTranslations("science");
 
   return (
     <section className="bg-surface-container relative overflow-hidden py-16 md:py-20 px-4 sm:px-8" id="why">
@@ -28,11 +29,10 @@ export default function ScienceSection() {
           className="mb-8 md:mb-10"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            The science of cold extraction
+            {t("heading")}
           </h2>
           <p className="text-on-surface-variant text-lg max-w-2xl">
-            Three numbers that explain why cold pressed oil is not just a
-            preference — it&apos;s chemistry.
+            {t("subheading")}
           </p>
         </motion.div>
 
