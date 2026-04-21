@@ -42,67 +42,10 @@ export default function GayusGlitz() {
           </a>
         </div>
 
-        {/* Featured + side */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
-          {featured && (
-            <div className="lg:col-span-2 rounded-[2rem] overflow-hidden border border-outline sun-shadow bg-surface-container">
-              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  className="absolute inset-0 w-full h-full rounded-t-[2rem]"
-                  src={`https://www.youtube.com/embed/${featured.youtubeId}`}
-                  title={featured.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-5">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                  Gayu&apos;s Glitz · {featured.category}
-                </span>
-                <p className="font-bold mt-1">{featured.title}</p>
-                {featured.description && (
-                  <p className="text-sm text-on-surface-variant mt-1">
-                    {featured.description}
-                  </p>
-                )}
-              </div>
-            </div>
-          )}
-          <div className="flex flex-col gap-5">
-            {side.map((v) => (
-              <div
-                key={v.id}
-                className="rounded-[2rem] overflow-hidden border border-outline sun-shadow bg-surface-container"
-              >
-                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                  <iframe
-                    className="absolute inset-0 w-full h-full"
-                    src={`https://www.youtube.com/embed/${v.youtubeId}`}
-                    title={v.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-4">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                    {v.category}
-                  </span>
-                  <p className="font-bold text-sm mt-1">{v.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {bottom.map((v) => (
-            <div
-              key={v.id}
-              className="rounded-[2rem] overflow-hidden border border-outline sun-shadow bg-surface-container"
-            >
+        {/* Mobile: show only 2 videos */}
+        <div className="flex flex-col gap-5 md:hidden">
+          {[featured, ...(side.slice(0, 1))].filter(Boolean).map((v) => v && (
+            <div key={v.id} className="rounded-[2rem] overflow-hidden border border-outline sun-shadow bg-surface-container">
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                 <iframe
                   className="absolute inset-0 w-full h-full"
@@ -113,14 +56,92 @@ export default function GayusGlitz() {
                   loading="lazy"
                 />
               </div>
-              <div className="p-5">
+              <div className="p-4">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
-                  {v.category}
+                  Gayu&apos;s Glitz · {v.category}
                 </span>
-                <p className="font-bold mt-1">{v.title}</p>
+                <p className="font-bold text-sm mt-1">{v.title}</p>
               </div>
             </div>
           ))}
+          <a
+            href="https://www.youtube.com/@gayithri.t"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 border border-outline rounded-full py-3 text-sm font-bold text-primary hover:border-primary transition-colors"
+          >
+            <span className="material-symbols-outlined text-[18px]">play_circle</span>
+            View all videos on YouTube
+          </a>
+        </div>
+
+        {/* Desktop: full layout */}
+        <div className="hidden md:block">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
+            {featured && (
+              <div className="lg:col-span-2 rounded-[2rem] overflow-hidden border border-outline sun-shadow bg-surface-container">
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full rounded-t-[2rem]"
+                    src={`https://www.youtube.com/embed/${featured.youtubeId}`}
+                    title={featured.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
+                    Gayu&apos;s Glitz · {featured.category}
+                  </span>
+                  <p className="font-bold mt-1">{featured.title}</p>
+                  {featured.description && (
+                    <p className="text-sm text-on-surface-variant mt-1">{featured.description}</p>
+                  )}
+                </div>
+              </div>
+            )}
+            <div className="flex flex-col gap-5">
+              {side.map((v) => (
+                <div key={v.id} className="rounded-[2rem] overflow-hidden border border-outline sun-shadow bg-surface-container">
+                  <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                    <iframe
+                      className="absolute inset-0 w-full h-full"
+                      src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                      title={v.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{v.category}</span>
+                    <p className="font-bold text-sm mt-1">{v.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-5">
+            {bottom.map((v) => (
+              <div key={v.id} className="rounded-[2rem] overflow-hidden border border-outline sun-shadow bg-surface-container">
+                <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                    title={v.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{v.category}</span>
+                  <p className="font-bold mt-1">{v.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -61,10 +61,6 @@ export default function FamilySection() {
             <p className="text-2xl font-bold text-primary">10,000+</p>
             <p className="text-xs text-on-surface-variant">Happy families served</p>
           </div>
-          <div className="md:hidden mt-4 bg-surface-container-lowest sun-shadow px-6 py-4 rounded-2xl border border-outline w-fit">
-            <p className="text-2xl font-bold text-primary">10,000+</p>
-            <p className="text-xs text-on-surface-variant">Happy families served</p>
-          </div>
         </div>
       </div>
     </section>

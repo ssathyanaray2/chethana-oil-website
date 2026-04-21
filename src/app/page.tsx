@@ -11,6 +11,7 @@ import GayusGlitz from "@/components/sections/GayusGlitz";
 import FamilySection from "@/components/sections/FamilySection";
 import CTABanner from "@/components/sections/CTABanner";
 import FAQSection from "@/components/sections/FAQSection";
+import StickyWhatsApp from "@/components/layout/StickyWhatsApp";
 
 // JSON-LD structured data — helps Google show rich results
 const jsonLd = {
@@ -65,6 +66,7 @@ export default function HomePage() {
       </main>
 
       <Footer />
+      <StickyWhatsApp />
     </>
   );
 }

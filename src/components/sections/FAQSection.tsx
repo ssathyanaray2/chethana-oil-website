@@ -36,8 +36,9 @@ export default function FAQSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section className="bg-surface-container py-16 md:py-20 px-4 sm:px-8" id="faq">
-      <div className="max-w-3xl mx-auto">
+    <section className="bg-surface-container py-16 md:py-20 px-4 sm:px-8 relative overflow-hidden" id="faq">
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/images/faq_bg_texture.png')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.12 }} />
+      <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

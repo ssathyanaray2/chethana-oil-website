@@ -18,18 +18,37 @@ export default function JourneySection() {
   const [activeStep, setActiveStep] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
-  const [hasStarted, setHasStarted] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const dotRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Loop: advance every STEP_DURATION, wrapping back to 0
-  useEffect(() => {
-    if (!isInView || hasStarted) return;
-    setHasStarted(true);
+  const startLoop = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
     const N = journeySteps.length;
-    const id = setInterval(() => {
+    intervalRef.current = setInterval(() => {
       setActiveStep((prev) => (prev + 1) % N);
     }, STEP_DURATION);
-    return () => clearInterval(id);
-  }, [isInView, hasStarted]);
+  };
+
+  // Start loop when section comes into view
+  useEffect(() => {
+    if (!isInView) return;
+    startLoop();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInView]);
+
+  // Scroll active dot into view
+  useEffect(() => {
+    const container = scrollRef.current;
+    const dot = dotRefs.current[activeStep];
+    if (!container || !dot) return;
+    const containerLeft = container.getBoundingClientRect().left;
+    const dotLeft = dot.getBoundingClientRect().left;
+    const dotCenter = dotLeft + dot.offsetWidth / 2 - containerLeft;
+    const scrollTarget = container.scrollLeft + dotCenter - container.offsetWidth / 2;
+    container.scrollTo({ left: scrollTarget, behavior: "smooth" });
+  }, [activeStep]);
 
   const step = journeySteps[activeStep];
   const barPct = (activeStep / (journeySteps.length - 1)) * 100;
@@ -58,6 +77,7 @@ export default function JourneySection() {
 
         {/* ── Stepper ── */}
         <div
+          ref={scrollRef}
           className="overflow-x-auto pb-2 mb-8 md:mb-10"
           style={{ scrollbarWidth: "none" }}
         >
@@ -100,7 +120,8 @@ export default function JourneySection() {
                 return (
                   <button
                     key={s.number}
-                    onClick={() => setActiveStep(i)}
+                    ref={(el) => { dotRefs.current[i] = el; }}
+                    onClick={() => { setActiveStep(i); startLoop(); }}
                     className="flex flex-col items-center gap-4"
                   >
                     <div className="relative flex items-center justify-center">
