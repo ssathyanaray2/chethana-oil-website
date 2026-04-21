@@ -95,7 +95,7 @@ export default function OGImage() {
             textTransform: "uppercase",
           }}
         >
-          Artisanal · Authentic · Ancestral
+          Real Oil from Real Seeds
         </div>
 
         {/* Golden bottom bar */}
