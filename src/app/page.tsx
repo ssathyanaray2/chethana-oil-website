@@ -9,7 +9,6 @@ import JourneySection from "@/components/sections/JourneySection";
 import ProductsSection from "@/components/sections/ProductsSection";
 import GayusGlitz from "@/components/sections/GayusGlitz";
 import FamilySection from "@/components/sections/FamilySection";
-import WhatsAppOrder from "@/components/sections/WhatsAppOrder";
 import CTABanner from "@/components/sections/CTABanner";
 import FAQSection from "@/components/sections/FAQSection";
 

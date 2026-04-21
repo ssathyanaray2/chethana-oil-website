@@ -7,6 +7,10 @@ export const metadata: Metadata = {
     default: site.seo.defaultTitle,
     template: site.seo.titleTemplate,
   },
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
   description: site.description,
   keywords: site.seo.keywords,
   authors: [{ name: site.name }],

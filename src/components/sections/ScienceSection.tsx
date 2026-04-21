@@ -1,26 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { scienceCards } from "@/data/science";
-import { heatStages } from "@/data/heatStages";
 
 const EASE = [0.4, 0, 0.2, 1] as [number, number, number, number];
 
 export default function ScienceSection() {
-  const [activeIdx, setActiveIdx] = useState(-1);
-  const heatRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(heatRef, { once: true, amount: 0.3 });
 
-  useEffect(() => {
-    if (!isInView) return;
-    const timers = heatStages.map((_, i) =>
-      setTimeout(() => setActiveIdx(i), i * 900)
-    );
-    return () => timers.forEach(clearTimeout);
-  }, [isInView]);
-
-  const active = activeIdx >= 0 ? heatStages[activeIdx] : null;
 
   return (
     <section className="bg-surface-container relative overflow-hidden py-16 md:py-20 px-4 sm:px-8" id="why">
