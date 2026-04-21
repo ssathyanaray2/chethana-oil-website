@@ -24,8 +24,8 @@ const config: Config = {
         "on-secondary-container": "#3d2600",
       },
       fontFamily: {
-        headline: ["Epilogue", "sans-serif"],
-        body: ["Be Vietnam Pro", "sans-serif"],
+        headline: ["var(--font-epilogue)", "sans-serif"],
+        body: ["var(--font-be-vietnam-pro)", "sans-serif"],
       },
       borderRadius: {
         DEFAULT: "0.25rem",
