@@ -88,7 +88,7 @@ export default function Hero() {
           <div className="relative w-full max-w-sm mx-auto">
             <div className="bg-surface-container rounded-[3rem] overflow-hidden border border-outline sun-shadow aspect-[3/4] flex items-center justify-center">
               <Image
-                src="/images/hero-character.png"
+                src="/images/hero-character.webp"
                 alt="Chetana Cold Pressed Oil bottle"
                 width={400}
                 height={540}

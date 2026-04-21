@@ -13,7 +13,7 @@ export default function ScienceSection() {
     <section className="bg-surface-container relative overflow-hidden py-16 md:py-20 px-4 sm:px-8" id="why">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/bottle-hero.png"
+        src="/images/bottle-hero.webp"
         alt=""
         aria-hidden="true"
         className="absolute pointer-events-none select-none opacity-70 w-[300px] lg:w-[500px] -top-12 left-1/2 -translate-x-1/2 rotate-[20deg]"

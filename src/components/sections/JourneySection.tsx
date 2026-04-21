@@ -11,7 +11,7 @@ const STEP_DURATION = 4000;
 function OilDrop() {
   return (
     // eslint-disable-next-line @next/next/no-img-element
-    <img src="/images/drop_img.png" alt="" width={40} height={40} style={{ width: 40, height: "auto", mixBlendMode: "multiply" }} />
+    <img src="/images/drop_img.webp" alt="" width={40} height={40} style={{ width: 40, height: "auto", mixBlendMode: "multiply" }} />
   );
 }
 

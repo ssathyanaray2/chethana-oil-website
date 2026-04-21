@@ -17,7 +17,7 @@
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-image: url('/images/bg-texture-potrait.png');
+    background-image: url('/images/bg-texture-potrait.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -27,7 +27,7 @@
 
   @media (min-width: 1024px) {
     body::before {
-      background-image: url('/images/bg-texture.png');
+      background-image: url('/images/bg-texture.webp');
     }
   }
   h1, h2, h3, h4 {

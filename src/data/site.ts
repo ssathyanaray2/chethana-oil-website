@@ -9,7 +9,7 @@ export const site = {
   whatsapp: "919845134234",
   phone: "+91 98451 34234",
   contacts: [
-    { name: "Shabari's Chetana", phone: "+91 98451 34234" },
+    { name: "Ravi T L", phone: "+91 98451 34234" },
     { name: "Shabari's Chetana", phone: "+91 98450 55707" },
   ],
   founded: 2017,

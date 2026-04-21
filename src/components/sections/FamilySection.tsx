@@ -39,7 +39,7 @@ export default async function FamilySection() {
         <div className="relative">
           <div className="rounded-[3rem] overflow-hidden border border-outline sun-shadow">
             <Image
-              src="/images/family.png"
+              src="/images/family.webp"
               alt="Families cooking with Chetana cold press oil"
               width={600}
               height={500}

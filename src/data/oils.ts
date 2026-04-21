@@ -153,7 +153,7 @@ export const oils: Oil[] = [
     unit: "500ml",
     badge: "Pooja & Ritual",
     emoji: "🪔",
-    image: "/images/oilimages/deepam.png",
+    image: "/images/oilimages/deepam.webp",
     benefits: ["Pure & unadulterated", "Clean burning", "Traditional blend", "Sacred use"],
     bestFor: ["Diya lamps", "Pooja rituals", "Festivals", "Daily worship"],
     smokePoint: "—",
