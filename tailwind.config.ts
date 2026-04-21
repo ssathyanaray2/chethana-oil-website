@@ -39,6 +39,15 @@ const config: Config = {
       boxShadow: {
         sun: "0 20px 40px rgba(196, 138, 0, 0.08)",
       },
+      animation: {
+        marquee: "marquee 30s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
     },
   },
   plugins: [],

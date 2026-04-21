@@ -59,7 +59,7 @@ export default function Hero() {
               Order via WhatsApp
             </Link>
             <Link
-              href="/oils"
+              href="/#oils"
               className="border border-outline text-on-surface px-7 py-3.5 rounded-full font-bold text-sm hover:border-primary hover:text-primary transition-colors"
             >
               Browse Oils

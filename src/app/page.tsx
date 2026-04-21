@@ -11,6 +11,7 @@ import GayusGlitz from "@/components/sections/GayusGlitz";
 import FamilySection from "@/components/sections/FamilySection";
 import WhatsAppOrder from "@/components/sections/WhatsAppOrder";
 import CTABanner from "@/components/sections/CTABanner";
+import FAQSection from "@/components/sections/FAQSection";
 
 // JSON-LD structured data — helps Google show rich results
 const jsonLd = {
@@ -59,6 +60,7 @@ export default function HomePage() {
           <FamilySection />
           <GayusGlitz />
           {/* <WhatsAppOrder /> */}
+          <FAQSection />
           <CTABanner />
         {/* </BottleScrollAnimation> */}
       </main>
