@@ -1,5 +1,5 @@
 export const site = {
-  url: "https://chetanacoldpressedoils.netlify.app/",
+  url: "https://chetanacoldpressedoils.netlify.app",
   name: "Chetana Cold Pressed Oils",
   shortName: "Chetana",
   tagline: "Artisanal. Authentic. Ancestral.",
