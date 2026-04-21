@@ -19,8 +19,8 @@ const jsonLd = {
   "@type": "LocalBusiness",
   name: site.name,
   description: site.description,
-  url: "https://chetanaoils.com",
-  logo: "https://chetanaoils.com/images/logo.png",
+  url: site.url,
+  logo: `${site.url}/images/logo.png`,
   address: {
     "@type": "PostalAddress",
     addressLocality: "Challakere",
