@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     title: site.seo.defaultTitle,
     description: site.description,
   },
+  verification: {
+    google: "1gMf0XRZU7qmuotkzomJCsToLUO_VdHwA0o7dZcPPrk",
+  },
   robots: {
     index: true,
     follow: true,
