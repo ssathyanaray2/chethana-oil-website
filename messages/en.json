@@ -1,0 +1,129 @@
+{
+  "nav": {
+    "whyColdPress": "Why Cold Press?",
+    "ourOils": "Our Oils",
+    "ourStory": "Our Process",
+    "contact": "Contact",
+    "brand": "Chetana",
+    "orderNow": "Order Now",
+    "toggleMenu": "Toggle menu"
+  },
+  "hero": {
+    "eyebrow": "Challakere, Karnataka",
+    "headingLine1": "Oils pressed",
+    "headingAccent": "the way nature",
+    "headingLine3": "intended.",
+    "lede": "Cold pressed below 40°C. No heat, no chemicals, no compromise. Every drop carries the full nutrition of the seed it came from.",
+    "orderCta": "Order via WhatsApp",
+    "browseCta": "Browse Oils",
+    "orCall": "or call us at",
+    "stats": {
+      "years": { "value": "7+", "label": "Years crafting" },
+      "families": { "value": "10K+", "label": "Families" },
+      "varieties": { "value": "9+", "label": "Varieties" }
+    },
+    "pills": {
+      "coldPressed": { "label": "Cold Pressed", "sub": "Below 40°C" },
+      "natural": { "label": "100% Natural", "sub": "No chemicals" },
+      "farmSourced": { "label": "Farm Sourced", "sub": "Challakere" },
+      "localSeeds": { "label": "Local Seeds", "sub": "Quality assured" }
+    }
+  },
+  "science": {
+    "heading": "The science of cold extraction",
+    "subheading": "Three numbers that explain why cold pressed oil is not just a preference — it's chemistry."
+  },
+  "journey": {
+    "heading": "The journey of every drop",
+    "subheading": "From the sun-baked farms of Challakere to your kitchen table.",
+    "stepBadge": "Step 0{number}: {title}"
+  },
+  "products": {
+    "heading": "Our Products",
+    "viewAll": "View all oils"
+  },
+  "family": {
+    "badge": "Trusted by Families",
+    "heading": "The intelligent mother's choice for every kitchen",
+    "body": "From tadkas to dosas, rotis to curries — Chetana cold press oils bring the flavour and nutrition your family deserves. No compromise on purity, ever.",
+    "trust": {
+      "flavour": "Rich natural flavour — no artificial additives or preservatives",
+      "natural": "100% natural, single-ingredient — just the seed, nothing else",
+      "heart": "Heart-healthy fats preserved through cold extraction"
+    },
+    "stat": { "value": "10,000+", "label": "Happy families served" }
+  },
+  "gayus": {
+    "badge": "As Featured On",
+    "heading": "Gayu's Glitz loves\nChetana Cold Press",
+    "body": "Gayithri, Karnataka's trusted organic lifestyle YouTuber, has visited our mill and shared her honest experience with over 383,000 subscribers.",
+    "channel": "Gayu's Glitz",
+    "subscribers": "383K subscribers · 85M+ views",
+    "viewAll": "View all videos on YouTube",
+    "videoLabel": "Gayu's Glitz · {category}"
+  },
+  "faq": {
+    "heading": "Frequently asked questions",
+    "subheading": "Everything you need to know about cold pressed oils and how we work.",
+    "items": [
+      {
+        "q": "What does 'cold pressed' actually mean?",
+        "a": "Cold pressing extracts oil using only mechanical pressure, keeping temperatures below 40°C throughout. This preserves the natural vitamins, antioxidants, and flavour that are destroyed when heat or chemicals are used in industrial extraction."
+      },
+      {
+        "q": "How is Chetana oil different from supermarket oils?",
+        "a": "Supermarket oils are typically extracted using hexane (a petroleum solvent) at temperatures above 150°C, then bleached and deodorised. Chetana oils are single-ingredient — just the seed, cold pressed. Nothing added, nothing removed."
+      },
+      {
+        "q": "How do I order?",
+        "a": "We take orders via WhatsApp. Just tap the 'Order via WhatsApp' button, send us your requirement, and we'll confirm availability and delivery details. We deliver within Challakere and surrounding areas."
+      },
+      {
+        "q": "How long does the oil stay fresh?",
+        "a": "Cold pressed oils have a natural shelf life of 6–9 months when stored in a cool, dark place. Unlike refined oils, ours have no preservatives — so proper storage matters. Keep the cap tight and away from direct sunlight."
+      },
+      {
+        "q": "Can I use cold pressed oil for high-heat cooking?",
+        "a": "It depends on the oil. Groundnut and mustard oils have high smoke points (230°C+) and are great for frying. Sesame and coconut oils are better for medium heat. We recommend using each oil within its smoke point for best nutrition and flavour."
+      },
+      {
+        "q": "Are the seeds sourced locally?",
+        "a": "Yes. We source seeds directly from farmers in and around Challakere, Karnataka. This keeps quality consistent and supports local agriculture. For some varieties, we work with the same farming families every season."
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Straight from Challakere\nto your kitchen",
+    "body": "Join {familiesServed} families who have switched to uncompromised purity. Your health is our heritage.",
+    "button": "Order via WhatsApp",
+    "orCall": "or call us at"
+  },
+  "sticky": {
+    "tagline": "Freshly pressed · Challakere",
+    "button": "WhatsApp",
+    "message": "Hi! I'd like to order Chetana cold pressed oil."
+  },
+  "footer": {
+    "brand": "Chetana",
+    "tagline": "Crafting artisanal cold-pressed oils since {founded} with a heritage of over {years} years in traditional oil extraction.",
+    "sections": {
+      "explore": "Explore",
+      "contact": "Contact",
+      "order": "Order",
+      "follow": "Follow"
+    },
+    "links": {
+      "groundnut": "Groundnut Oil",
+      "sesame": "Sesame Oil",
+      "coconut": "Coconut Oil",
+      "mustard": "Mustard Oil",
+      "whyColdPress": "Why Cold Press?",
+      "ourProcess": "Our Process",
+      "faq": "FAQ",
+      "whatsapp": "WhatsApp Us",
+      "gayus": "Gayu's Glitz"
+    },
+    "copyright": "© {year} {name}. All rights reserved.",
+    "madeWith": "Made with care in Challakere, Karnataka 🇮🇳"
+  }
+}

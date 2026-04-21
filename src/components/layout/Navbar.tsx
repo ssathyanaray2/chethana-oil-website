@@ -4,16 +4,18 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-const navLinks = [
-  { label: "Why Cold Press?", href: "/#why" },
-  { label: "Our Oils", href: "/oils" },
-  { label: "Our Story", href: "/#story" },
-  { label: "Contact", href: "/#contact" },
-];
+import { useTranslations } from "next-intl";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const t = useTranslations("nav");
+
+  const navLinks = [
+    { label: t("whyColdPress"), href: "/#why" },
+    { label: t("ourOils"), href: "/#oils" },
+    { label: t("ourStory"), href: "/#journey" },
+    { label: t("contact"), href: "/#contact" },
+  ];
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-theme">
@@ -27,7 +29,7 @@ export default function Navbar() {
             className="object-contain"
           />
           <span className="text-xl font-bold text-on-surface tracking-tight font-headline">
-            Chetana
+            {t("brand")}
           </span>
         </Link>
 
@@ -43,10 +45,10 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/#order"
+            href="/#cta"
             className="bg-primary text-on-primary px-5 py-2 rounded-full text-sm font-bold hover:opacity-90 transition-opacity"
           >
-            Order Now
+            {t("orderNow")}
           </Link>
         </div>
 
@@ -54,7 +56,7 @@ export default function Navbar() {
         <button
           className="md:hidden p-1"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
+          aria-label={t("toggleMenu")}
         >
           <span className="material-symbols-outlined text-on-surface">
             {open ? "close" : "menu"}
@@ -84,11 +86,11 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                href="/#order"
+                href="/#cta"
                 onClick={() => setOpen(false)}
                 className="block mt-3 bg-primary text-on-primary px-5 py-3 rounded-full text-sm font-bold text-center"
               >
-                Order Now
+                {t("orderNow")}
               </Link>
             </div>
           </motion.div>

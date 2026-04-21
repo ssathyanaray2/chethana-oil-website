@@ -3,16 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-
-const leftPills = [
-  { icon: "thermostat", label: "Cold Pressed", sub: "Below 40°C" },
-  { icon: "science", label: "100% Natural", sub: "No chemicals" },
-];
-
-const rightPills = [
-  { icon: "eco", label: "Farm Sourced", sub: "Challakere" },
-  { icon: "verified", label: "Local Seeds", sub: "Quality assured" },
-];
+import { useTranslations } from "next-intl";
+import { site } from "@/data/site";
 
 const EASE = [0.4, 0, 0.2, 1] as [number, number, number, number];
 
@@ -23,6 +15,18 @@ const fadeUp = (delay = 0) => ({
 });
 
 export default function Hero() {
+  const t = useTranslations("hero");
+
+  const leftPills = [
+    { icon: "thermostat", label: t("pills.coldPressed.label"), sub: t("pills.coldPressed.sub") },
+    { icon: "science", label: t("pills.natural.label"), sub: t("pills.natural.sub") },
+  ];
+
+  const rightPills = [
+    { icon: "eco", label: t("pills.farmSourced.label"), sub: t("pills.farmSourced.sub") },
+    { icon: "verified", label: t("pills.localSeeds.label"), sub: t("pills.localSeeds.sub") },
+  ];
+
   return (
     <section className="relative min-h-[90vh] flex items-start lg:items-center pt-20 pb-12 px-4 sm:px-8 overflow-hidden">
       {/*
@@ -36,7 +40,7 @@ export default function Hero() {
           <motion.div {...fadeUp(0.1)}>
             <span className="inline-flex items-center gap-2 bg-secondary-container text-on-secondary-container px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase">
               <span className="material-symbols-outlined text-[16px]">location_on</span>
-              Challakere, Karnataka
+              {t("eyebrow")}
             </span>
           </motion.div>
 
@@ -44,14 +48,13 @@ export default function Hero() {
             {...fadeUp(0.2)}
             className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight"
           >
-            Oils pressed <br />
-            <span className="text-primary">the way nature</span>
-            <br />intended.
+            {t("headingLine1")} <br />
+            <span className="text-primary">{t("headingAccent")}</span>
+            <br />{t("headingLine3")}
           </motion.h1>
 
           <motion.p {...fadeUp(0.3)} className="text-on-surface-variant text-lg leading-relaxed max-w-md">
-            Cold pressed below 40°C. No heat, no chemicals, no compromise.
-            Every drop carries the full nutrition of the seed it came from.
+            {t("lede")}
           </motion.p>
         </div>
 
@@ -117,31 +120,37 @@ export default function Hero() {
 
         {/* 3 — CTAs + stats (mobile: after image; desktop: bottom of left col) */}
         <div className="space-y-5 order-3 lg:col-start-1 lg:row-start-2">
-          <motion.div {...fadeUp(0.4)} className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href="/#order"
-              className="bg-primary text-on-primary px-7 py-3.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity sun-shadow"
-            >
-              <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>chat</span>
-              Order via WhatsApp
-            </Link>
-            <Link
-              href="/#oils"
-              className="border border-outline text-on-surface px-7 py-3.5 rounded-full font-bold text-sm flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
-            >
-              Browse Oils
-            </Link>
+          <motion.div {...fadeUp(0.4)} className="space-y-2">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent("Hi! I'd like to order Chetana cold pressed oil.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-on-primary px-7 py-3.5 rounded-full font-bold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity sun-shadow"
+              >
+                <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>chat</span>
+                {t("orderCta")}
+              </a>
+              <Link
+                href="/#oils"
+                className="border border-outline text-on-surface px-7 py-3.5 rounded-full font-bold text-sm flex items-center justify-center hover:border-primary hover:text-primary transition-colors"
+              >
+                {t("browseCta")}
+              </Link>
+            </div>
+            <p className="text-xs text-on-surface-variant pl-1">
+              {t("orCall")}{" "}
+              <a href={`tel:${site.phone}`} className="font-semibold text-on-surface hover:text-primary transition-colors">
+                {site.phone}
+              </a>
+            </p>
           </motion.div>
 
-          <motion.div {...fadeUp(0.5)} className="flex gap-6 pt-2 ">
-            {[
-              { val: "7+", label: "Years crafting" },
-              { val: "10K+", label: "Families" },
-              { val: "9+", label: "Varieties" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl font-bold text-black text-on-surface">{stat.val}</p>
-                <p className="text-xs font-semibold text-on-surface-variant">{stat.label}</p>
+          <motion.div {...fadeUp(0.5)} className="flex gap-6 pt-2">
+            {(["years", "families", "varieties"] as const).map((key) => (
+              <div key={key}>
+                <p className="text-3xl font-bold text-black text-on-surface">{t(`stats.${key}.value`)}</p>
+                <p className="text-xs font-semibold text-on-surface-variant">{t(`stats.${key}.label`)}</p>
               </div>
             ))}
           </motion.div>
