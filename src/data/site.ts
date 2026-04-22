@@ -14,7 +14,7 @@ export const site = {
   ],
   founded: 2017,
   yearsOfExpertise: 30,
-  familiesServed: "10,000+",
+  familiesServed: "1,00,000+",
   oilVarieties: 9,
   instagram: "",
   youtube: "https://www.youtube.com/@gayithri.t",

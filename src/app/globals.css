@@ -28,7 +28,7 @@
     }
   }
   h1, h2, h3, h4 {
-    font-family: 'Epilogue', sans-serif;
+    font-family: var(--font-epilogue), sans-serif;
     @apply text-on-surface;
   }
   .material-symbols-outlined {

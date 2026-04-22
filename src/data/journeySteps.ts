@@ -57,7 +57,7 @@ export const journeySteps: JourneyStep[] = [
     title: "Cold Press",
     headline: "Slow. Steady. Unheated.",
     description:
-      "Our expeller presses seeds at under 40°C using nothing but mechanical force. No steam injection, no pre-heating drum. One pass — the oil that flows is all we keep.",
+      "Gana press seeds at under 40°C using nothing but mechanical force. No steam injection, no pre-heating drum. One pass — the oil that flows is all we keep.",
     stat1: { value: "<40°C", label: "Max Temperature" },
     stat2: { value: "100%", label: "Nutrients Intact" },
     aside: {
@@ -73,19 +73,20 @@ export const journeySteps: JourneyStep[] = [
   },
   {
     number: 4,
-    title: "Natural Settling",
-    headline: "Gravity is our only filter",
+    title: "Filtering",
+    headline: "Clean oil, naturally",
     description:
-      "We don't force our oil through micro-plastics or high-pressure filters. We let it rest in stainless steel containers for 48 hours. Heavy sediments settle naturally.",
-    stat1: { value: "48h", label: "Resting Time" },
-    stat2: { value: "0%", label: "Micro-plastics" },
+      "We pass the pressed oil through a food-grade filter to remove seed sediment and fine particles. No micro-plastics, no synthetic filter aids — just a clean, clear oil ready for bottling.",
+    stat1: { value: "Food-Grade", label: "Filter Only" },
+    stat2: { value: "0%", label: "Synthetic Additives" },
     aside: {
       title: "What we never do",
       icon: "warning",
       type: "close",
       items: [
-        "Filter cloth recycling — harbors bacteria if not cleaned with harsh chemicals",
-        "Adulteration with Palm or Argemone oil to lower costs",
+        "No bleaching or deodorising agents",
+        "No recycled filter cloth that harbours bacteria",
+        "No adulteration with Palm or Argemone oil to lower costs",
       ],
     },
   },
@@ -94,9 +95,9 @@ export const journeySteps: JourneyStep[] = [
     title: "Bottling",
     headline: "Sealed for freshness",
     description:
-      "Oil is poured into food-grade containers on the same day as pressing. Bottles are sealed immediately to prevent oxidation. No warehouse sitting. No re-bottling.",
+      "After filtering, oil is stored in stainless steel containers until it is poured into food-grade bottles. Bottles are sealed immediately to prevent oxidation. ",
     stat1: { value: "Same Day", label: "Pressed & Bottled" },
-    stat2: { value: "FSSAI", label: "Certified" },
+    stat2: { value: "Steel", label: "Storage Containers" },
     aside: {
       title: "Our packaging promise",
       icon: "inventory_2",
@@ -111,18 +112,18 @@ export const journeySteps: JourneyStep[] = [
   {
     number: 6,
     title: "Your Kitchen",
-    headline: "Straight to your doorstep",
+    headline: "Across India, through trusted agents",
     description:
-      "Orders are dispatched within 24 hours via WhatsApp. For Challakere locals, same-day delivery. For pan-India, we ship in insulated packaging to protect freshness.",
-    stat1: { value: "24h", label: "Dispatch Time" },
-    stat2: { value: "10,000+", label: "Families Served" },
+      "We reach families across India through our network of local agents in multiple cities. Order via WhatsApp and we'll connect you to the nearest agent or ship directly to your door.",
+    stat1: { value: "Pan-India", label: "Delivery" },
+    stat2: { value: "1,00,000+", label: "Families Served" },
     aside: {
       title: "How to order",
       icon: "chat",
       type: "check",
       items: [
         "Message us on WhatsApp — no app, no sign-up",
-        "Pay after confirmation — COD available locally",
+        "Available through agents in multiple cities across India",
         "Bulk & wholesale orders welcome",
       ],
     },

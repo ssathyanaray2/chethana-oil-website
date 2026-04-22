@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { journeySteps } from "@/data/journeySteps";
 import { useTranslations } from "next-intl";
 
 const EASE = [0.4, 0, 0.2, 1] as [number, number, number, number];
-const STEP_DURATION = 4000;
+const STEP_DURATION = 7000;
 
 function OilDrop() {
   return (
@@ -18,27 +18,31 @@ function OilDrop() {
 export default function JourneySection() {
   const t = useTranslations("journey");
   const [activeStep, setActiveStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const dotRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const isPausedRef = useRef(false);
 
-  const startLoop = () => {
+  isPausedRef.current = isPaused;
+
+  const startLoop = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     const N = journeySteps.length;
     intervalRef.current = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % N);
+      if (!isPausedRef.current) {
+        setActiveStep((prev) => (prev + 1) % N);
+      }
     }, STEP_DURATION);
-  };
+  }, []);
 
-  // Start loop when section comes into view
   useEffect(() => {
     if (!isInView) return;
     startLoop();
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView]);
+  }, [isInView, startLoop]);
 
   // Scroll active dot into view
   useEffect(() => {
@@ -82,29 +86,19 @@ export default function JourneySection() {
           ref={scrollRef}
           className="overflow-x-auto pb-2 mb-8 md:mb-10"
           style={{ scrollbarWidth: "none" }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <div className="relative px-6 md:px-12 min-w-[560px]">
-            {/*
-              The dot row is a justify-between flex.
-              First dot center = 24px from left (half of w-12).
-              Last dot center  = 24px from right.
-              So we inset the bar by left-6 / right-6 (1.5rem = 24px)
-              to align bar start/end with dot centres.
-            */}
             <div className="relative flex justify-between">
-              {/* Bar lives here — inset to match dot centres */}
+              {/* Bar */}
               <div className="absolute left-6 right-6 top-6 z-30" style={{ height: 1 }}>
-                {/* Track */}
                 <div className="absolute inset-0 bg-outline" />
-
-                {/* Fill */}
                 <motion.div
                   className="absolute inset-y-0 left-0 bg-primary"
                   animate={{ width: `${barPct}%` }}
                   transition={{ duration: 0.9, ease: EASE }}
                 />
-
-                {/* Oil drop — rides the fill, hangs just above the bar */}
                 <motion.div
                   className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
                   style={{ top: "50%", filter: "drop-shadow(0 4px 8px rgba(196,138,0,0.5))" }}
@@ -174,97 +168,101 @@ export default function JourneySection() {
         </div>
 
         {/* ── Detail card ── */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeStep}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.35, ease: EASE }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8 bg-surface-container-lowest rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 sun-shadow border border-outline items-start"
-          >
-            {/* Left */}
-            <div className="space-y-4">
-              <motion.span
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.05, duration: 0.3, ease: EASE }}
-                className="inline-flex bg-primary text-on-primary px-3 py-0.5 rounded-full text-xs font-bold"
-              >
-                {t("stepBadge", { number: step.number, title: step.title })}
-              </motion.span>
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeStep}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.35, ease: EASE }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8 bg-surface-container-lowest rounded-[1.5rem] md:rounded-[2rem] p-5 md:p-8 sun-shadow border border-outline items-start"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+            >
+              {/* Left */}
+              <div className="space-y-4">
+                <motion.span
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05, duration: 0.3, ease: EASE }}
+                  className="inline-flex bg-primary text-on-primary px-3 py-0.5 rounded-full text-xs font-bold"
+                >
+                  {t("stepBadge", { number: step.number, title: step.title })}
+                </motion.span>
 
-              <motion.h3
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.35, ease: EASE }}
-                className="text-2xl font-bold"
-              >
-                {step.headline}
-              </motion.h3>
+                <motion.h3
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.35, ease: EASE }}
+                  className="text-2xl font-bold"
+                >
+                  {step.headline}
+                </motion.h3>
 
-              <motion.p
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15, duration: 0.35, ease: EASE }}
-                className="text-on-surface-variant text-sm leading-relaxed"
-              >
-                {step.description}
-              </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15, duration: 0.35, ease: EASE }}
+                  className="text-on-surface-variant text-sm leading-relaxed"
+                >
+                  {step.description}
+                </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.35, ease: EASE }}
-                className="flex gap-8 border-t border-outline pt-4"
-              >
-                <div>
-                  <p className="text-2xl font-bold text-primary">{step.stat1.value}</p>
-                  <p className="text-xs font-medium text-on-surface-variant">{step.stat1.label}</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-primary">{step.stat2.value}</p>
-                  <p className="text-xs font-medium text-on-surface-variant">{step.stat2.label}</p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Right */}
-            <div className="bg-background p-5 rounded-[1.5rem] border border-outline">
-              <motion.h4
-                initial={{ opacity: 0, x: 12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1, duration: 0.3, ease: EASE }}
-                className="text-primary font-bold flex items-center gap-2 mb-3 text-sm"
-              >
-                <span className="material-symbols-outlined text-[18px]">
-                  {step.aside.icon}
-                </span>
-                {step.aside.title}
-              </motion.h4>
-
-              <div className="space-y-3">
-                {step.aside.items.map((item, idx) => (
-                  <motion.div
-                    key={item}
-                    initial={{ opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.15 + idx * 0.09, duration: 0.3, ease: EASE }}
-                    className="flex items-start gap-3"
-                  >
-                    <span
-                      className="material-symbols-outlined text-primary mt-0.5 text-[18px]"
-                      style={{ fontVariationSettings: "'FILL' 1" }}
-                    >
-                      {step.aside.type === "close" ? "cancel" : "check_circle"}
-                    </span>
-                    <p className="text-sm text-on-surface">{item}</p>
-                  </motion.div>
-                ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.35, ease: EASE }}
+                  className="flex gap-8 border-t border-outline pt-4"
+                >
+                  <div>
+                    <p className="text-2xl font-bold text-primary">{step.stat1.value}</p>
+                    <p className="text-xs font-medium text-on-surface-variant">{step.stat1.label}</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-primary">{step.stat2.value}</p>
+                    <p className="text-xs font-medium text-on-surface-variant">{step.stat2.label}</p>
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+
+              {/* Right */}
+              <div className="bg-background p-5 rounded-[1.5rem] border border-outline">
+                <motion.h4
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1, duration: 0.3, ease: EASE }}
+                  className="text-primary font-bold flex items-center gap-2 mb-3 text-sm"
+                >
+                  <span className="material-symbols-outlined text-[18px]">
+                    {step.aside.icon}
+                  </span>
+                  {step.aside.title}
+                </motion.h4>
+
+                <div className="space-y-3">
+                  {step.aside.items.map((item, idx) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: 12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.15 + idx * 0.09, duration: 0.3, ease: EASE }}
+                      className="flex items-start gap-3"
+                    >
+                      <span
+                        className="material-symbols-outlined text-primary mt-0.5 text-[18px]"
+                        style={{ fontVariationSettings: "'FILL' 1" }}
+                      >
+                        {step.aside.type === "close" ? "cancel" : "check_circle"}
+                      </span>
+                      <p className="text-sm text-on-surface">{item}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

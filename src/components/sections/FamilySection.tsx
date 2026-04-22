@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
-const trustIcons = ["verified", "eco", "favorite"] as const;
-const trustKeys = ["flavour", "natural", "heart"] as const;
+const trustIcons = ["verified", "eco", "favorite", "verified"] as const;
+const trustKeys = ["flavour", "natural", "heart", "quality"] as const;
 
 export default async function FamilySection() {
   const t = await getTranslations("family");

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+
 import { oils } from "@/data/oils";
 import { useTranslations } from "next-intl";
 
@@ -21,17 +21,16 @@ export default function ProductsSection() {
       <div className="overflow-hidden" style={{ WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)" }}>
         <div className="flex gap-5 w-max animate-marquee hover:[animation-play-state:paused]">
           {[...oils, ...oils].map((oil, i) => (
-            <Link
+            <div
               key={`${oil.slug}-${i}`}
-              href={`/oils/${oil.slug}`}
-              className="group bg-surface-container rounded-[2.5rem] overflow-hidden sun-shadow border border-outline flex-none w-[220px] md:w-[260px] transition-transform hover:-translate-y-2"
+              className="bg-surface-container rounded-[2.5rem] overflow-hidden sun-shadow border border-outline flex-none w-[220px] md:w-[260px]"
             >
               <div className="h-48 bg-background relative overflow-hidden">
                 <Image
                   src={oil.image}
                   alt={`Chetana Cold Pressed ${oil.name}`}
                   fill
-                  className="object-contain p-4 group-hover:scale-105 transition-transform duration-700"
+                  className="object-contain p-4"
                 />
                 <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary">
                   {oil.emoji} {oil.badge}
@@ -40,7 +39,7 @@ export default function ProductsSection() {
               <div className="p-4">
                 <h3 className="text-base font-bold">{oil.name}</h3>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>
